@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 결과</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .result-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+        .question {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #2196F3;
+        }
+        .result {
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #2e7d32;
+        }
+        .incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 2px solid #c62828;
+        }
+        .explanation {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        .next-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .next-button:hover {
+            background-color: #1976D2;
+            transform: translateY(-2px);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .result {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <div class="question">{{ quiz.question }}</div>
+        <div class="result {% if is_correct %}correct{% else %}incorrect{% endif %}">
+            {% if is_correct %}
+            정답입니다! 👍
+            {% else %}
+            오답입니다. 정답은 {{ quiz.options[quiz.answer|int-1] }}입니다. 😢
+            {% endif %}
+        </div>
+        <div class="explanation">
+            <strong>해설:</strong><br>
+            {{ quiz.explanation }}
+        </div>
+        <form action="{{ url_for('quiz') }}" method="get">
+            <button type="submit" class="next-button">
+                {% if question_number|int <= 10 %}
+                다음 문제
+                {% else %}
+                결과 보기
+                {% endif %}
+            </button>
+        </form>
+    </div>
+</body>
+</html> 

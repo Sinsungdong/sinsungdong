@@ -1,16 +1,32 @@
-## Hi there 👋
+# 양액 퀴즈 앱
 
-<!--
-**Sinsungdong/sinsungdong** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+양액 관련 지식을 테스트할 수 있는 웹 기반 퀴즈 애플리케이션입니다.
 
-Here are some ideas to get you started:
+## 기능
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- 랜덤으로 10문제 출제
+- 각 문제마다 상세한 설명 제공
+- 점수 계산 및 결과 표시
+- 모바일 환경 지원
+
+## 설치 방법
+
+1. 필요한 패키지 설치:
+```bash
+pip install -r requirements.txt
+```
+
+2. 앱 실행:
+```bash
+python quiz_app.py
+```
+
+3. 웹 브라우저에서 접속:
+- 컴퓨터: `http://localhost:5000`
+- 모바일: `http://[컴퓨터IP]:5000`
+
+## 주의사항
+
+- 컴퓨터와 모바일이 같은 WiFi 네트워크에 연결되어 있어야 합니다
+- 컴퓨터의 방화벽에서 5000번 포트를 허용해야 합니다
+- 컴퓨터가 켜져있어야 앱에 접속할 수 있습니다 

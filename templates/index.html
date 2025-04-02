@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>양액 제조 퀴즈</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .main-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+        }
+        h1 {
+            color: #2196F3;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        .start-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .start-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+        .contact-info {
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .contact-info a {
+            color: #2196F3;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .creator-info {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>양액 제조 퀴즈</h1>
+        <p>양액 제조에 대한 지식을 테스트해보세요!</p>
+        <a href="{{ url_for('quiz') }}" class="start-button">시작하기</a>
+        <div class="contact-info">
+            <p>오류 발견 시 연락처: <a href="mailto:sinssungdong@gmail.com">sinssungdong@gmail.com</a></p>
+        </div>
+        <div class="creator-info">
+            <p>제작자: 원예학과 신진철</p>
+        </div>
+    </div>
+</body>
+</html> 

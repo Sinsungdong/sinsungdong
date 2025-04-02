@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 결과</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .result-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+        }
+        h1 {
+            color: #2196F3;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        .score {
+            font-size: 3em;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 30px 0;
+        }
+        .message {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .restart-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+        .restart-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>퀴즈 완료!</h1>
+        <div class="score">{{ score }}점</div>
+        <div class="message">
+            {% if score == 100 %}
+            완벽합니다! 모든 문제를 맞히셨네요! 🎉
+            {% elif score >= 80 %}
+            훌륭합니다! 양액 제조에 대해 잘 알고 계시네요! 👏
+            {% elif score >= 60 %}
+            잘 하셨습니다! 조금 더 공부하시면 더 좋은 점수를 받을 수 있을 거예요! 💪
+            {% else %}
+            조금 더 노력이 필요해요. 다시 한번 도전해보세요! 📚
+            {% endif %}
+        </div>
+        <a href="{{ url_for('index') }}" class="restart-button">다시하기</a>
+    </div>
+</body>
+</html> 

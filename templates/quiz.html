@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>양액 제조 퀴즈</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .question-number {
+            color: #2196F3;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #333;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #2196F3;
+        }
+        .options {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .option-button {
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: white;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+        .option-button:hover {
+            background-color: #f0f0f0;
+            border-color: #999;
+            transform: translateY(-2px);
+        }
+        .option-button.selected {
+            background-color: #e3f2fd;
+            border-color: #2196F3;
+            color: #1976D2;
+        }
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        .submit-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="question-number">문제 {{ question_number }}/10</div>
+        <div class="question">
+            {{ quiz.question }}
+        </div>
+        <form action="{{ url_for('check_answer') }}" method="post">
+            <div class="options">
+                {% for i in range(4) %}
+                <button type="button" class="option-button" onclick="selectOption('{{ i + 1 }}')">
+                    {{ i + 1 }}. {{ quiz.options[i] }}
+                </button>
+                {% endfor %}
+            </div>
+            <input type="hidden" name="answer" id="selected_answer">
+            <button type="submit" class="submit-button" id="submit_button" disabled>제출하기</button>
+        </form>
+    </div>
+
+    <script>
+        function selectOption(option) {
+            // 모든 버튼에서 선택 상태 제거
+            document.querySelectorAll('.option-button').forEach(button => {
+                button.classList.remove('selected');
+            });
+            
+            // 선택된 버튼 스타일 변경
+            event.target.classList.add('selected');
+            
+            // 선택된 답 저장
+            document.getElementById('selected_answer').value = option;
+            
+            // 제출 버튼 활성화
+            document.getElementById('submit_button').disabled = false;
+        }
+    </script>
+</body>
+</html> 
